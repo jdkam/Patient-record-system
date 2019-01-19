@@ -11,48 +11,47 @@ int main()
     string choice;
     bool done = false;
 
-while(done!=true){
-    cout << "[E] Enter a new Patient:" << endl
-         << "[R] Remove an existing Patient" << endl
-         << "[S] Search for an existing Patient" << endl
-         << "[M] Modify an existing Patient" << endl
-         << "[P] Print list of all Patients"
-         << "[X] Exit Program" << endl;
+    while (done != true)
+    {
+        cout << "[E] Enter a new Patient:" << endl
+             << "[R] Remove an existing Patient" << endl
+             << "[S] Search for an existing Patient" << endl
+             << "[M] Modify an existing Patient" << endl
+             << "[P] Print list of all Patients"
+             << "[X] Exit Program" << endl;
 
+        cin >> choice;
 
-    cin >> choice;
-
-    if (choice == "E" || choice == "e")
-    {
-        newPatient();
+        if (choice == "E" || choice == "e")
+        {
+            newPatient();
+        }
+        else if (choice == "R" || choice == "r")
+        {
+            removePatient();
+        }
+        else if (choice == "S" || choice == "s")
+        {
+            searchPatient();
+        }
+        else if (choice == "M" || choice == "m")
+        {
+            modifyPatient();
+        }
+        else if (choice == "P" || choice == "p")
+        {
+            printList();
+        }
+        else if (choice == "X" || choice == "x")
+        {
+            done = true;
+            break;
+        }
+        else
+        {
+            cout << "Option not recognized.. Please try again." << endl;
+        }
     }
-    else if (choice == "R" || choice == "r")
-    {
-        removePatient();
-    }
-    else if (choice == "S" || choice == "s")
-    {
-        searchPatient();
-    }
-    else if (choice == "M" || choice == "m")
-    {
-        modifyPatient();
-    }
-    else if (choice == "P" || choice == "p")
-    {
-        printList();
-    }
-    else if (choice == "X" || choice == "x")
-    {
-        done = true;
-        break;
-    }
-    else
-    {
-        cout << "Option not recognized.. Please try again." << endl;
-    }
-
-}
 
     cout << "       ************FINISHED EXECUTABLE************ " << endl;
 
@@ -60,15 +59,15 @@ while(done!=true){
 
 void newPatient()
 {
-    string cc;
+    string carecard;
     string name;
     string address;
     string email;
     string phone;
 
     cout << "Enter 10 digit Care Card number: " << endl;
-    cin >> cc;
-    Patient p(cc); //creates new patient object with entered carecard
+    cin >> carecard;
+    Patient p(carecard); //creates new patient object with entered carecard
     cout << "CareCard set to: " << p.getCareCard() << "\n\n";
 
     //grab name

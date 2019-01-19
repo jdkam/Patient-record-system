@@ -56,6 +56,18 @@ bool List::remove(const Patient &toBeRemoved)
     return false;
 }
 
+Patient* List::search(const Patient& target){
+
+    for (int i=0; i< elementCount; i++){
+        if(this->elements[i] == target)
+        {
+            return &(this->elements[i]);
+        }
+    }
+
+    return NULL;
+}
+
 
 
 void List::removeAll()
