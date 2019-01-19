@@ -56,6 +56,21 @@ bool List::remove(const Patient &toBeRemoved)
     return false;
 }
 
+void List::sort(){
+    //bubble sort
+    for(int i=0; i< MAX_ELEMENTS; i++)
+    {
+        for(int k=i; k <= elementCount; k++){
+            if(elements[k]>elements[k+1])
+            {
+                //swap 
+                swap(elements[k], elements[k+1]);
+            }
+        }
+    }
+
+}
+
 Patient* List::search(const Patient& target){
 
     for (int i=0; i< elementCount; i++){
