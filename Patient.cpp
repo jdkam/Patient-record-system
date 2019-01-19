@@ -21,7 +21,6 @@
 //                except the care card number which is set to "0000000000".       
 Patient::Patient() : careCard("0000000000") {
 
-// You need to complete this method.
 }
 
 // Parameterized Constructor
@@ -30,13 +29,13 @@ Patient::Patient() : careCard("0000000000") {
 //                All other data members set to "To be entered".
 Patient::Patient(string aCareCard) {
 
-// You need to complete this method.
-if ((aCareCard.length()) < 10 || (aCareCard.length()) > 10){
-careCard = "0000000000";
-}
-else{
-    careCard = aCareCard;
-}
+	if ((aCareCard.length()) < 10 || (aCareCard.length()) > 10){
+	careCard = "0000000000";
+	cout << "ERROR: INVALID CARECARD LENGTH!" <<endl;
+	}
+	else{
+		careCard = aCareCard;
+	}
 }
 
 // Getters and setters -> You need to implement these methods.
@@ -79,6 +78,10 @@ void Patient::setAddress(const string anAddress){
 
 //sets the patient's phone number
 void Patient::setPhone(const string aPhone){
+
+	if ((aPhone.length()) < 10 || (aPhone.length()) >10){
+		cout << "ERROR: PHONE NUMBER LENGTH INVALID!" <<endl;
+	}
     phone = aPhone;
 }
 
@@ -90,7 +93,7 @@ void Patient::setEmail(const string anEmail){
 // Overloaded Operators
 // Description: Comparison operator. Compares "this" Patient object with "rhs" Patient object.
 //              Returns true if both Patient objects have the same care card number.
-bool Patient::operator == (const Patient & rhs) {
+bool Patient::operator == (const Patient& rhs) {
 	
 	// Compare both Patient objects
 	if (this->careCard == rhs.getCareCard() ) 

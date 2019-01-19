@@ -15,6 +15,7 @@
 // You can add #include statements if you wish.
 #include <string>
 #include <iostream>
+#include <locale>
 
 using namespace std;
 
@@ -22,6 +23,15 @@ using namespace std;
 //Description: Prompts user to enter patient info
 //post condition: at the end, adds patient to List
 void newPatient(); //my function for creating a new patient
+
+void removePatient();
+
+void searchPatient();
+
+void modifyPatient();
+
+void printList();
+
 
 class Patient {
 	
