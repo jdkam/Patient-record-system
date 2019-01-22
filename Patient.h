@@ -24,6 +24,10 @@ using namespace std;
 //post condition: at the end, adds patient to List
 void newPatient(); //my function for creating a new patient
 
+
+//Removes a patient by carecard number
+//Description: Prompts user to enter carecard number, then removes that patient with that number
+//post condition: at the end, shifts patient array by 1 and decreases element count by 1
 void removePatient();
 
 void searchPatient();
@@ -31,6 +35,8 @@ void searchPatient();
 void modifyPatient();
 
 void printList();
+
+void removeAll();
 
 
 class Patient {

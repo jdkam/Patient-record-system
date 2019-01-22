@@ -96,10 +96,16 @@ void Patient::setEmail(const string anEmail){
 bool Patient::operator == (const Patient& rhs) {
 	
 	// Compare both Patient objects
-	if (this->careCard == rhs.getCareCard() ) 
+	if (this->careCard == rhs.getCareCard() ){
+		cout << "Match found" << endl;
 		return true;
-	else 
+	}
+	else {
+		cout << "No match found" << endl;
 		return false;
+
+	}
+
 	
 } // end of operator ==
 
@@ -119,6 +125,9 @@ bool Patient::operator > (const Patient & rhs) {
 
 // Description: Prints the content of "this".
 ostream & operator<<(ostream & os, const Patient & p) {
+
+	os << p.getCareCard() << " - Patient: " << p.getName() << ", " << p.getAddress() << ", "
+	<< p.getPhone() << ", " << p.getEmail() << endl;
 	
 // You need to complete this method.   
 	     

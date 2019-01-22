@@ -4,7 +4,6 @@
 #include <iostream>
 #include "List.h"
 
-
 List::List() //default constructor
 {
 }
@@ -17,37 +16,49 @@ int List::getElementCount() const
 
 bool List::insert(const Patient &newElement) //done
 {
-    //need to write
 
-    //need to check if newElement isnt already in data
-    //compares this patient object with rhs patient object
-
-    for (int i = 0; i < MAX_ELEMENTS; i++)
-    {
-        if (this->elements[i] == newElement)
-        {
-            return false;
-        }
+    if (elementCount == 0)
+    { //check if list is empty
+        elements[elementCount] = newElement;
+        elementCount++;
     }
-    //insert newElement
-    elements[elementCount] = newElement;
-    elementCount++;
+    else 
+    {
+
+        //need to fix this
+        for (int i = 0; i < elementCount; i++)
+        {
+            if (elements[i] == newElement)
+            {
+                cout << "ERROR: Patient entered is already in system!!" <<endl;
+                return false;
+            }
+        }
+        //insert newElement
+        elements[elementCount] = newElement;
+        elementCount++;
+
+        sort(elements, elementCount);
+        cout << "Patient Inserted Successfully" << endl;
+    }
     return true;
 }
 
+// Description: Remove an element.
+// Postcondition: toBeRemoved is removed and elementCount has been decremented.
 bool List::remove(const Patient &toBeRemoved)
 {
     //need to write
-    for (int i = 0; i < MAX_ELEMENTS; i++)
+    for (int i = 0; i < elementCount; i++)
     {
-        if (this->elements[i] == toBeRemoved)
+        if (elements[i] == toBeRemoved)
         {
             //remove element
             elementCount--;
             //shifts everything to left by 1
-            for(int k=i; k<=elementCount; k++){
-                this->elements[k] = this->elements[k+1];
-                
+            for (int k = i; k <= elementCount; k++)
+            {
+                this->elements[k] = this->elements[k + 1];
             }
 
             return true;
@@ -56,25 +67,41 @@ bool List::remove(const Patient &toBeRemoved)
     return false;
 }
 
-void List::sort(){
+//need comments
+void List::sort(Patient elements[], int elementCount)
+{
     //bubble sort
-    for(int i=0; i< MAX_ELEMENTS; i++)
+    for (int i = 0; i < elementCount; i++)
     {
-        for(int k=i; k <= elementCount; k++){
-            if(elements[k]>elements[k+1])
+        for (int k = i; k <= elementCount; k++)
+        {
+            if (elements[k] > elements[i+1])
             {
-                //swap 
-                swap(elements[k], elements[k+1]);
+                //swap
+                swap(&elements[k+1], &elements[k]);
             }
         }
     }
-
 }
 
-Patient* List::search(const Patient& target){
+void List::swap(Patient *y, Patient *x)
+{
 
-    for (int i=0; i< elementCount; i++){
-        if(this->elements[i] == target)
+    Patient temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+// Description: Search for target element.
+//              Returns a pointer to the element if found,
+//              otherwise, returns NULL.
+
+Patient *List::search(const Patient &target)
+{
+
+    for (int i = 0; i < elementCount; i++)
+    {
+        if (this->elements[i] == target)
         {
             return &(this->elements[i]);
         }
@@ -83,11 +110,19 @@ Patient* List::search(const Patient& target){
     return NULL;
 }
 
-
-
+//Descripton: Removes all elements by setting elementCount to 0
 void List::removeAll()
 {
-    //need to write
+    cout << "remove all complete" << endl;
+    elementCount = 0;
+}
 
-    
+//prints all elements in the list
+void List::printAll()
+{
+    sort(elements,elementCount);
+    cout << "********Printing Patient List********\n\n";
+    for(int i=0; i < elementCount; i++ ){
+        cout << elements[i];
+    }
 }

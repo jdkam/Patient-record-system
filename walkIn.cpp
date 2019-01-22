@@ -1,13 +1,18 @@
 //client code
 
 #include "Patient.h"
+#include "List.h"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
+
+List myList;
+
 int main()
 { //start of main
+
     string choice;
     bool done = false;
 
@@ -17,7 +22,8 @@ int main()
              << "[R] Remove an existing Patient" << endl
              << "[S] Search for an existing Patient" << endl
              << "[M] Modify an existing Patient" << endl
-             << "[P] Print list of all Patients"
+             << "[P] Print list of all Patients" << endl
+             << "[A] Removes all Patients" << endl
              << "[X] Exit Program" << endl;
 
         cin >> choice;
@@ -42,6 +48,16 @@ int main()
         {
             printList();
         }
+        else if (choice == "A" || choice == "a")
+        {
+            cout << "Are you sure you want to delete all patients? (y/n)" << endl;
+            cin >> choice;
+            if (choice == "y")
+            {
+                removeAll();
+            }
+            //else do nothing
+        }
         else if (choice == "X" || choice == "x")
         {
             done = true;
@@ -53,9 +69,15 @@ int main()
         }
     }
 
-    cout << "       ************FINISHED EXECUTABLE************ " << endl;
+    cout << "       ************Program Ended by User************ " << endl;
 
 } //END OF MAIN FUNCTION
+
+
+
+
+
+
 
 void newPatient()
 {
@@ -64,7 +86,7 @@ void newPatient()
     string address;
     string email;
     string phone;
-
+    
     cout << "Enter 10 digit Care Card number: " << endl;
     cin >> carecard;
     Patient p(carecard); //creates new patient object with entered carecard
@@ -104,8 +126,13 @@ void newPatient()
     p.setEmail(email);
     cout << "Email set to: " << p.getEmail() << "\n\n";
 
+    myList.insert(p);
     //insert patient object
-    //delete patient object
+
+    cout << "Elements in list: " << myList.getElementCount() << endl;
+
+    //print Patient
+    cout << p;
 }
 
 void removePatient()
@@ -117,12 +144,20 @@ void removePatient()
 
 void searchPatient()
 {
+    //need to do
 }
 
 void modifyPatient()
 {
+    //need to do
 }
 
-void printList()
+void printList() //DONE
 {
+    myList.printAll();
+}
+
+void removeAll() //DONE
+{
+    myList.removeAll();
 }

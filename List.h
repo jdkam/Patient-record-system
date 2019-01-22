@@ -35,7 +35,7 @@ private:
 	                                   //    change the value given to this constant.***
 	Patient elements[MAX_ELEMENTS];    // Data structure with capacity of MAX_ELEMENTS
 	int elementCount = 0;                  // Current element count in element array
-	int capacity;                      // Actual maximum capacity of element array   
+	int capacity;                  	    // Actual maximum capacity of element array   
 
 public:
 
@@ -50,7 +50,7 @@ public:
 	List();
 
 	// Description: Returns the total element count currently stored in List.
-	int  getElementCount() const;
+	int getElementCount() const;
 
 	// Description: Insert an element.
 	// Precondition: newElement must not already be in data collection.  
@@ -61,7 +61,15 @@ public:
 	// Postcondition: toBeRemoved is removed and elementCount has been decremented.	
 	bool remove( const Patient& toBeRemoved );
 
-	void sort();
+
+	//Description: Bubble sorts patients by carecard
+	void sort(Patient elements[], int elementCount);
+
+	void swap(Patient *x, Patient *y);
+
+
+	//uses the osstream overload to print list
+	void printAll();
 	
 	// Description: Remove all elements.
 	void removeAll();
@@ -70,6 +78,8 @@ public:
 	//              Returns a pointer to the element if found,
 	//              otherwise, returns NULL.
 	Patient* search(const Patient& target);
+
+	void swap(int *x, int *y);
    
 
 }; // end List.h
