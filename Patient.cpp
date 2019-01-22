@@ -97,11 +97,11 @@ bool Patient::operator == (const Patient& rhs) {
 	
 	// Compare both Patient objects
 	if (this->careCard == rhs.getCareCard() ){
-		cout << "Match found" << endl;
+		//cout << "Match found" << endl;
 		return true;
 	}
 	else {
-		cout << "No match found" << endl;
+		//cout << "No match found" << endl;
 		return false;
 
 	}

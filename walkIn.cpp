@@ -7,7 +7,6 @@
 
 using namespace std;
 
-
 List myList;
 
 int main()
@@ -18,6 +17,7 @@ int main()
 
     while (done != true)
     {
+        cout << "********** Welcome **********\n\n";
         cout << "[E] Enter a new Patient:" << endl
              << "[R] Remove an existing Patient" << endl
              << "[S] Search for an existing Patient" << endl
@@ -73,12 +73,6 @@ int main()
 
 } //END OF MAIN FUNCTION
 
-
-
-
-
-
-
 void newPatient()
 {
     string carecard;
@@ -86,7 +80,7 @@ void newPatient()
     string address;
     string email;
     string phone;
-    
+
     cout << "Enter 10 digit Care Card number: " << endl;
     cin >> carecard;
     Patient p(carecard); //creates new patient object with entered carecard
@@ -144,7 +138,24 @@ void removePatient()
 
 void searchPatient()
 {
-    //need to do
+    string searchCC;
+    Patient *pTemp;
+
+    //need to do first
+    cout << "Enter the Patient you wish to search for by their Carecard number:" << endl;
+    cin >> searchCC;
+
+    pTemp = myList.search(searchCC);
+    if (pTemp == NULL)
+    {
+        cout << "Could not find that patient in the system\n\n" << endl;
+    }
+    else
+    {   
+
+        cout << *pTemp << endl << endl;
+    }
+
 }
 
 void modifyPatient()

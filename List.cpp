@@ -6,6 +6,7 @@
 
 List::List() //default constructor
 {
+    capacity = MAX_ELEMENTS;
 }
 
 //returns total element count currently stored in List
@@ -22,15 +23,17 @@ bool List::insert(const Patient &newElement) //done
         elements[elementCount] = newElement;
         elementCount++;
     }
-    else
+    else if(elementCount == capacity)
     {
+        cout << "ERROR: Database is full!" << endl;
+    }
+    else{
 
-        //need to fix this
         for (int i = 0; i < elementCount; i++)
         {
             if (elements[i] == newElement)
             {
-                cout << "ERROR: Patient entered is already in system!!" << endl;
+                cout << "ERROR: Patient with that careCard number is already entered is already in the system!!" << endl;
                 return false;
             }
         }
@@ -67,8 +70,7 @@ bool List::remove(const Patient &toBeRemoved)
     return false;
 }
 
-//need comments
-void List::sort(Patient elements[], int elementCount)
+void List::sort(Patient elements[], int elementCount) //DONE
 {
     //bubble sort
     for (int i = 0; i < elementCount; i++)
@@ -85,12 +87,12 @@ void List::sort(Patient elements[], int elementCount)
     }
 }
 
-void List::swap(Patient *x, Patient *y) // y = 9, x = 1
+void List::swap(Patient *x, Patient *y) 
 {
 
-    Patient temp = *x; //put 9 into temp
-    *x = *y;           //replace 9 with 1
-    *y = temp;         //replace 1 with 9
+    Patient temp = *x; 
+    *x = *y;           
+    *y = temp;         
 }
 
 // Description: Search for target element.
@@ -102,12 +104,12 @@ Patient *List::search(const Patient &target)
 
     for (int i = 0; i < elementCount; i++)
     {
-        if (this->elements[i] == target)
+        if (elements[i] == target)
         {
-            return &(this->elements[i]);
+            cout << "Found Patient in system with following information: " << endl;
+            return &(elements[i]);
         }
     }
-
     return NULL;
 }
 
