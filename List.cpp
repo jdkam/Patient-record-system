@@ -22,7 +22,7 @@ bool List::insert(const Patient &newElement) //done
         elements[elementCount] = newElement;
         elementCount++;
     }
-    else 
+    else
     {
 
         //need to fix this
@@ -30,7 +30,7 @@ bool List::insert(const Patient &newElement) //done
         {
             if (elements[i] == newElement)
             {
-                cout << "ERROR: Patient entered is already in system!!" <<endl;
+                cout << "ERROR: Patient entered is already in system!!" << endl;
                 return false;
             }
         }
@@ -38,7 +38,7 @@ bool List::insert(const Patient &newElement) //done
         elements[elementCount] = newElement;
         elementCount++;
 
-        sort(elements, elementCount);
+        //sort(elements, elementCount);
         cout << "Patient Inserted Successfully" << endl;
     }
     return true;
@@ -73,23 +73,24 @@ void List::sort(Patient elements[], int elementCount)
     //bubble sort
     for (int i = 0; i < elementCount; i++)
     {
-        for (int k = i; k <= elementCount; k++)
+        for (int k = 0; k < elementCount - 1; k++)
         {
-            if (elements[k] > elements[i+1])
+            if (elements[k] > elements[k + 1]) //if high > low
             {
-                //swap
-                swap(&elements[k+1], &elements[k]);
+                
+                swap(&elements[k], &elements[k+1]); //swap
+                
             }
         }
     }
 }
 
-void List::swap(Patient *y, Patient *x)
+void List::swap(Patient *x, Patient *y) // y = 9, x = 1
 {
 
-    Patient temp = *x;
-    *x = *y;
-    *y = temp;
+    Patient temp = *x; //put 9 into temp
+    *x = *y;           //replace 9 with 1
+    *y = temp;         //replace 1 with 9
 }
 
 // Description: Search for target element.
@@ -120,9 +121,11 @@ void List::removeAll()
 //prints all elements in the list
 void List::printAll()
 {
-    sort(elements,elementCount);
+    sort(elements, elementCount);
     cout << "********Printing Patient List********\n\n";
-    for(int i=0; i < elementCount; i++ ){
+    for (int i = 0; i < elementCount; i++)
+    {
         cout << elements[i];
     }
+    cout << endl;
 }
