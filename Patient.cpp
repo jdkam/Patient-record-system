@@ -6,8 +6,9 @@
  *                  This care card number must have 10 digits.
  *                  This care card number cannot be modified. 
  *
- * Author: Jordan
+ * Author: Jordan Kam
  * Date: Jan 16, 2019
+ * Date modified: Jan 22, 2019
  */
 
 // You can add #include statements if you wish.
@@ -19,8 +20,9 @@
 // Description: Create a patient with a care card number of "0000000000".
 // Postcondition: All data members set to "To be entered",
 //                except the care card number which is set to "0000000000".
-Patient::Patient() : careCard("0000000000")
+Patient::Patient() : careCard("0000000000"), address("To be entered"), phone("To be entered"), email("To be entered"), name("To be entered")
 {
+
 }
 
 // Parameterized Constructor
@@ -33,6 +35,10 @@ Patient::Patient(string aCareCard)
 	if ((aCareCard.length()) < 10 || (aCareCard.length()) > 10)
 	{
 		careCard = "0000000000";
+		address = "To be entered";
+		phone = "To be entered";
+		email = "To be entered";
+		name = "To be entered";
 		cout << "ERROR: INVALID CARECARD LENGTH!" << endl;
 	}
 	else

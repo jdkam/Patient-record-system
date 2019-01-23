@@ -1,4 +1,14 @@
-//client code
+/*
+ * walkIn.cpp
+ * 
+ * Class Description: Client code that interfaces with user
+ * prompts user for an action
+ * Keep prompting user until user decides to exit
+ *
+ * Author: Jordan Kam
+ * Date created: Jan 16, 2019
+ * Last modified Jan 22, 2019
+ */
 
 #include "Patient.h"
 #include "List.h"
@@ -9,8 +19,11 @@ using namespace std;
 
 List myList;
 
+//start of main
+//purpose: Prompts the user to perform an action
+//post condition performs an action and returns to the main menu
 int main()
-{ //start of main
+{
 
     string choice;
     bool done = false;
@@ -74,6 +87,9 @@ int main()
 
 } //END OF MAIN FUNCTION
 
+//Function for creating a new patient
+//Description: Prompts user to enter patient info
+//post condition: at the end, adds patient to List
 void newPatient()
 {
     string carecard;
@@ -86,6 +102,11 @@ void newPatient()
     cin >> carecard;
     Patient p(carecard); //creates new patient object with entered carecard
     cout << "CareCard set to: " << p.getCareCard() << "\n\n";
+    if(carecard.length() > 10 || carecard.length()<10)
+    {
+        myList.insert(p);
+        return;
+    }
 
     //grab name
     cout << "Enter Patient's Name: ";
@@ -130,11 +151,11 @@ void newPatient()
     cout << p;
 }
 
-void removePatient() //DONE
+//Removes a patient by carecard number
+//Description: Prompts user to enter carecard number, then removes that patient with that number
+//post condition: at the end, shifts patient array by 1 and decreases element count by 1
+void removePatient()
 {
-    //search patient info
-    //match info with object
-    //remove object
     string removeCC;
 
     cout << "Enter the patient you want to remove by their carecard number: " << endl;
@@ -151,6 +172,9 @@ void removePatient() //DONE
     }
 }
 
+//Purpose: searches a patient by their carecard number
+//precondition: patient must exist in list
+//post condition: Patient is found and is printed to the user
 void searchPatient()
 {
     string searchCC;
@@ -174,6 +198,10 @@ void searchPatient()
     }
 }
 
+//purpose: search a patient by carecard number first and then prompts the user what
+//they want to change
+//precondition: patient must exist in list
+//post condition: attribute will be changed and change will be displayed to user
 void modifyPatient()
 {
     Patient *modifyP;
@@ -197,7 +225,6 @@ void modifyPatient()
     }
     else
     {
-
         cout << *modifyP << " Is the p that you searched" << endl;
         while (done != true)
         {
@@ -251,6 +278,4 @@ void modifyPatient()
             }
         }
     }
-
-    //need to do
 }
