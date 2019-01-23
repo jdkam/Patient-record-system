@@ -34,9 +34,6 @@ void searchPatient();
 
 void modifyPatient();
 
-void printList();
-
-void removeAll();
 
 
 class Patient {

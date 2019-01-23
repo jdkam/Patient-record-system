@@ -67,6 +67,8 @@ public:
 
 	void swap(Patient *x, Patient *y);
 
+	//Patient modSearch(const Patient &target);
+
 
 	//uses the osstream overload to print list
 	void printAll();

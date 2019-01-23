@@ -25,7 +25,7 @@ bool List::insert(const Patient &newElement) //done
     }
     else if(elementCount == capacity)
     {
-        cout << "ERROR: Database is full!" << endl;
+        cout << "***ERROR: Database is full!***" << endl;
     }
     else{
 
@@ -33,7 +33,7 @@ bool List::insert(const Patient &newElement) //done
         {
             if (elements[i] == newElement)
             {
-                cout << "ERROR: Patient with that careCard number is already entered is already in the system!!" << endl;
+                cout << "***ERROR: Patient with that careCard number is already entered is already in the system!***" << endl;
                 return false;
             }
         }
@@ -42,7 +42,7 @@ bool List::insert(const Patient &newElement) //done
         elementCount++;
 
         //sort(elements, elementCount);
-        cout << "Patient Inserted Successfully" << endl;
+        cout << "***Patient Inserted Successfully!***" << endl;
     }
     return true;
 }
@@ -106,17 +106,33 @@ Patient *List::search(const Patient &target)
     {
         if (elements[i] == target)
         {
-            cout << "Found Patient in system with following information: " << endl;
+            cout << "***Found Patient in system with following information: ***" << endl;
             return &(elements[i]);
         }
     }
     return NULL;
 }
 
+/*
+Patient List::modSearch(const Patient &target)
+{
+
+    for (int i = 0; i < elementCount; i++)
+    {
+        if (elements[i] == target)
+        {
+            cout << "***Found Patient in system with following information: ***" << endl;
+            return elements[i];
+        }
+    }
+   // return NULL;
+}
+*/
+
 //Descripton: Removes all elements by setting elementCount to 0
 void List::removeAll()
 {
-    cout << "remove all complete" << endl;
+    cout << "***Removed all patients successfully!***" << endl;
     elementCount = 0;
 }
 
@@ -125,9 +141,16 @@ void List::printAll()
 {
     sort(elements, elementCount);
     cout << "********Printing Patient List********\n\n";
+    if(elementCount==0)
+    {
+        cout << "***Database is currently empty!***\n\n";
+    }
+    else
+    {
     for (int i = 0; i < elementCount; i++)
     {
         cout << elements[i];
+    }
     }
     cout << endl;
 }
