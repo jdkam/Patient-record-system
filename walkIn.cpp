@@ -182,6 +182,9 @@ void modifyPatient()
     string choice;
     bool done = false;
     string name;
+    string address;
+    string phone;
+    string email;
 
     cout << "Enter the carecard of the patient you wish to modify\n";
     cin >> searchCC;
@@ -195,36 +198,52 @@ void modifyPatient()
     else
     {
 
-        cout << *modifyP << " Is the p that you searched"<<endl;
+        cout << *modifyP << " Is the p that you searched" << endl;
         while (done != true)
         {
             cout << "Type what you wish to modify: \n";
-            cout << "[N] Name\n[A] Address\n[P] Phone\n [E] Email\n[X] Exit\n\n";
+            cout << "[N] Name\n[A] Address\n[P] Phone\n[E] Email\n[X] Exit\n\n";
             cin >> choice;
 
             if (choice == "N" || choice == "n")
             {
-                cout << modifyP->getCareCard() << endl;
+                //cout << modifyP->getCareCard() << endl;
 
                 cout << "Type a new name: " << endl;
-                cin >> name;
+                cin.ignore(1000, '\n'); //fixes a getline error where cin is leaving the carriage return in the buffe
+                getline(cin, name);
 
                 modifyP->setName(name);
 
-                cout << modifyP->getName();
-
-                cout << "This works" << endl;
-             
+                cout << modifyP->getName() << " has been set to new name\n";
             }
             else if (choice == "A" || choice == "a")
             {
-                
+                cout << "Type a new address: " << endl;
+                cin.ignore(1000, '\n'); //fixes a getline error where cin is leaving the carriage return in the buffer
+                getline(cin, address);
+
+                modifyP->setAddress(address);
+
+                cout << modifyP->getAddress() << " has been set to new address\n";
             }
             else if (choice == "P" || choice == "p")
             {
+                cout << "Type a new phone number: " << endl;
+                cin >> phone;
+
+                modifyP->setPhone(phone);
+
+                cout << modifyP->getPhone() << " has been set to new phone\n";
             }
             else if (choice == "E" || choice == "e")
             {
+                cout << "Type a new email: " << endl;
+                cin >> email;
+
+                modifyP->setEmail(email);
+
+                cout << modifyP->getEmail() << " has been set to new email\n";
             }
             else if (choice == "X" || choice == "x")
             {
